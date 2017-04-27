@@ -52,8 +52,10 @@ void CExpSDIView::OnDraw(CDC* pDC)
 		return;
 
 	// TODO: add draw code for native data here
-	pDC->TextOut(30,6,CString(pDoc->m_lLetter));
-	pDC->TextOut(30,26,CString(pDoc->m_Letter.GetLetter()));
+	//pDC->TextOut(30,6,CString(pDoc->m_lLetter));
+	//pDC->TextOut(30,26,CString(pDoc->m_Letter.GetLetter()));
+
+	pDoc->DrawLetter(pDC);
 }
 
 
@@ -84,7 +86,7 @@ void CExpSDIView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 	CExpSDIDoc* pDoc=GetDocument();
-	pDoc->m_lLetter='M';
+	pDoc->NewLetter(point.x,point.y);
 	Invalidate();
 	CView::OnLButtonDown(nFlags, point);
 }

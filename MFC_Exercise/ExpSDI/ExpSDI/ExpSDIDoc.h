@@ -18,12 +18,12 @@ protected: // create from serialization only
 public:
 	char m_lLetter;
 	CLetter m_Letter;
-	CTypedPtrList<CObject,CLetter*> m_LetterList;
-	void* NewLetter(int x, int y);
-	void* DrawLetter(CDC* pDC);
+	CTypedPtrList<CObList,CLetter*> m_LetterList;
 
 // Operations
 public:
+	void NewLetter(int x, int y);
+	void DrawLetter(CDC* pDC);
 
 // Overrides
 public:

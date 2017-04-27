@@ -32,6 +32,24 @@ CExpSDIDoc::~CExpSDIDoc()
 {
 }
 
+void CExpSDIDoc::NewLetter(int x, int y)
+{
+	CLetter* pLetterItem=new CLetter('M',x,y);
+	m_LetterList.AddTail(pLetterItem);
+	SetModifiedFlag();
+}
+
+void CExpSDIDoc::DrawLetter(CDC* pDC)
+{
+	POSITION pos=m_LetterList.GetHeadPosition();
+	while(pos!=NULL)
+	{
+		CLetter* letter=m_LetterList.GetNext(pos);
+		//show letter on the specified position
+		pDC->TextOut(letter->m_x-5,letter->m_y-5,CString(letter->m_sLetter));
+	}
+}
+
 BOOL CExpSDIDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
@@ -50,16 +68,16 @@ BOOL CExpSDIDoc::OnNewDocument()
 
 void CExpSDIDoc::Serialize(CArchive& ar)
 {
-	if (ar.IsStoring())
-	{
-		// TODO: add storing code here
-		ar<<m_lLetter;
-	}
-	else
-	{
-		// TODO: add loading code here
-		ar>>m_lLetter;
-	}
+	//if (ar.IsStoring())
+	//{
+	//	// TODO: add storing code here
+	//	ar<<m_lLetter;
+	//}
+	//else
+	//{
+	//	// TODO: add loading code here
+	//	ar>>m_lLetter;
+	//}
 	m_Letter.Serialize(ar);
 }
 
