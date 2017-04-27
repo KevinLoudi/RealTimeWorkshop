@@ -1,0 +1,59 @@
+//find all .* file in a folder
+	CFileFind finder;
+	BOOL beWorking=finder.FindFile("*.cpp");
+	UINT count=0;
+	while(beWorking)
+	{
+		beWorking=finder.FindNextFile();
+		count++;
+	}
+	CString str;
+	str.Format("The folder has %d cpp files!",count);
+	MessageBox(str, MB_OK);
+	
+//communication between code blocks with CmemFiles
+	//define a memFile
+	CMemFile memFile;
+	.....
+    //write
+    CString str="a";
+	pDoc->memFile.Write(str.GetBuffer(0),str.GetLength());
+	.....
+	//read
+    CExp11Doc* pDoc=GetDocument();
+	CString str="";
+	pDoc->memFile.SeekToBegin();
+	pDoc->memFile.Read(str.GetBuffer(0),1); //with known message length
+	MessageBox(str,MB_OK);
+	
+//Get file status with CFileStatus struct
+	CFile m_File;
+	CFileStatus m_filestatus;
+	TRY 
+	{
+		if(!m_File.Open("aBmp1.bmp",CFile::modeRead))
+		{
+			MessageBox("Fail to open file!!!",MB_OK);
+			return;
+		}
+	}
+	CATCH (CMemoryException, e)
+	{
+		LPTSTR errStr;
+		e->GetErrorMessage(errStr,1);
+		MessageBox(errStr,MB_OK);
+	}
+	END_CATCH
+	m_File.GetStatus(m_filestatus);
+	#ifdef _DEBUG
+	CString str;
+	m_filestatus.Dump(afxDump);
+	#endif
+	
+//Handling file with CArchive class
+	CFile* pFileName=new CFile(MYFILE,CFile::modeCreate|CFile::modeWrite);
+	CArchive SaveArchive(pFileName,CArchive::store|CArchive::bNoFlushOnDelete);
+	SaveArchive<<'T'<<'o';
+	SaveArchive.Close();
+	pFileName->Close();
+	delete pFileName;
