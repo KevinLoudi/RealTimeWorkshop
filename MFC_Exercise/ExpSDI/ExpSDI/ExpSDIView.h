@@ -16,8 +16,13 @@ protected: // create from serialization only
 public:
 	CExpSDIDoc* GetDocument() const;
 
+
 // Operations
 public:
+	CStatic m_label1;
+	CButton m_button1;
+	CButton m_button2;
+	CEdit	m_edit1;
 
 // Overrides
 public:
@@ -34,6 +39,13 @@ public:
 #endif
 
 protected:
+	//CFont m_spinEditFont;
+	CSpinButtonCtrl m_spin;
+	CEdit m_spinEdit;				//object related to spin controler
+	void	InitSpinner();				//initial spin controler
+
+	CProgressCtrl m_progBar1, m_progBar2;
+	void InitProgressBar();
 
 // Generated message map functions
 protected:
@@ -41,6 +53,11 @@ protected:
 public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
 	afx_msg void OnRButtonDown(UINT nFlags, CPoint point);
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnButton1Clicked();
+	afx_msg void OnButton2Clicked();
+	afx_msg void OnMaxText();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
 };
 
 #ifndef _DEBUG  // debug version in ExpSDIView.cpp

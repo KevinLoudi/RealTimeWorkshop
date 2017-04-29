@@ -3,8 +3,14 @@
 // Used by ExpSDI.rc
 //
 #define IDD_ABOUTBOX				100
-#define IDR_MAINFRAME				128
+#define IDR_MAINFRAME			128
 #define IDR_ExpSDITYPE				130
+#define IDB_BUTTON1					131
+#define IDB_BUTTON2					132
+#define IDC_EDIT1						133
+#define IDC_PROGBAR1				134
+#define IDC_PROGBAR2				135
+#define IDC_SPINNER					136
 
 // Next default values for new objects
 //
