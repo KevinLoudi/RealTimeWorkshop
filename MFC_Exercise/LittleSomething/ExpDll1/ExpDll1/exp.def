@@ -1,0 +1,4 @@
+LIBRARY	"ExpDll1"
+
+EXPORTS ShowHello
+
