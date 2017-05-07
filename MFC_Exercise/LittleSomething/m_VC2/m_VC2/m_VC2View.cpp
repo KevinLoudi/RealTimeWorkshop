@@ -57,6 +57,7 @@ void Cm_VC2View::OnDraw(CDC* pDC)
 	pDC->SetViewportOrg(int(rect.right/2),int(rect.bottom/2));
 	//fill a rectangle without border
 	FillRect0(pDC,RGB(192,192,192),(0,0),700,500);
+	Rectangle0(pDC,-700,0,0,-500,RGB(128,128,128));
 }
 
 
@@ -87,6 +88,24 @@ void Cm_VC2View::FillRect0(CDC* pDc, COLORREF col, CPoint point, int chd,int kd)
 	pDc->SelectObject(pBrush); //recover brush
 	newBrush.DeleteObject(); //delete the new brush style
 
+}
+
+void Cm_VC2View::Rectangle0(CDC* pDc,UINT top_left,UINT bottom_left, UINT top_right, UINT bottom_right, COLORREF col)
+{
+	CBrush eiBrush;
+	CBrush* pOldBrush;
+	CPen* pOldPen;
+
+	//select pen and brush to plot
+	pOldPen=(CPen*)pDc->SelectStockObject(NULL_PEN); //select a null pen and get its pointer
+	eiBrush.CreateSolidBrush(col);
+	pOldBrush=pDc->SelectObject(&eiBrush);
+	pDc->Rectangle(top_left,top_right,bottom_left,bottom_right); //plot a rectangle
+
+	//recover original pen and brush
+	pDc->SelectObject(pOldPen);
+	pDc->SelectObject(pOldBrush);
+	eiBrush.DeleteObject();
 }
 
 #endif //_DEBUG

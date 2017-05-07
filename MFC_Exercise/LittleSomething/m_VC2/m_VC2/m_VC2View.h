@@ -20,6 +20,9 @@ public:
 public:
 	//1,2:color of brush,3:left-top point of rectangle, 4:width of rectangle, 
 	void FillRect0(CDC* pDc, COLORREF col, CPoint point, int chd,int kd);
+	void Rectangle0(CDC* pDc,UINT top_left,UINT bottom_left, UINT top_right, UINT bottom_right,
+		COLORREF col);
+	void Line0
 
 // Overrides
 public:
