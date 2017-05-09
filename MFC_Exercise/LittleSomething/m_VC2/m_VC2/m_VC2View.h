@@ -22,7 +22,12 @@ public:
 	void FillRect0(CDC* pDc, COLORREF col, CPoint point, int chd,int kd);
 	void Rectangle0(CDC* pDc,UINT top_left,UINT bottom_left, UINT top_right, UINT bottom_right,
 		COLORREF col);
-	void Line0
+  
+	void Line0(CDC* pDc,UINT x1,UINT y1, UINT x2, UINT y2, UINT swid,
+		COLORREF scol);
+	//mb: brush type
+	void Ellipse0(CDC* pDc,UINT left,UINT top, UINT right, UINT bottom, UINT swid,
+		COLORREF scol,BOOL mb); 
 
 // Overrides
 public:

@@ -58,6 +58,9 @@ void Cm_VC2View::OnDraw(CDC* pDC)
 	//fill a rectangle without border
 	FillRect0(pDC,RGB(192,192,192),(0,0),700,500);
 	Rectangle0(pDC,-700,0,0,-500,RGB(128,128,128));
+	Line0(pDC,-700,500,700,-500,4,RGB(255,0,0));
+	Line0(pDC,-700,-500,700,500,4,RGB(0,255,0));
+	Ellipse0(pDC,-300,500,0,0,1,RGB(192,192,192),LTGRAY_BRUSH);
 }
 
 
@@ -87,7 +90,7 @@ void Cm_VC2View::FillRect0(CDC* pDc, COLORREF col, CPoint point, int chd,int kd)
 	pDc->FillRect(CRect(point.x,point.y,point.x+chd,point.y+kd),&newBrush); //fill a rectangel
 	pDc->SelectObject(pBrush); //recover brush
 	newBrush.DeleteObject(); //delete the new brush style
-
+	return;
 }
 
 void Cm_VC2View::Rectangle0(CDC* pDc,UINT top_left,UINT bottom_left, UINT top_right, UINT bottom_right, COLORREF col)
@@ -106,6 +109,41 @@ void Cm_VC2View::Rectangle0(CDC* pDc,UINT top_left,UINT bottom_left, UINT top_ri
 	pDc->SelectObject(pOldPen);
 	pDc->SelectObject(pOldBrush);
 	eiBrush.DeleteObject();
+	return;
+}
+
+void Cm_VC2View::Line0(CDC* pDc,UINT x1,UINT y1, UINT x2, UINT y2, UINT swid,
+					   COLORREF scol)
+{
+	CPen sPen;
+	CPen* oPen;
+	sPen.CreatePen(PS_SOLID,swid,scol);
+
+	//plot a line with the created pen
+	oPen=pDc->SelectObject(&sPen);
+	pDc->MoveTo(x1,y1);
+	pDc->LineTo(x2,y2);
+
+	pDc->SelectObject(oPen);
+	sPen.DeleteObject();
+	return;
+}
+
+void Cm_VC2View::Ellipse0(CDC* pDc,UINT left,UINT top, UINT right, UINT bottom, UINT swid, COLORREF scol,BOOL mb)
+{
+	CPen sPen;
+	CPen* oPen;
+	CBrush* pBrush=(CBrush*)pDc->SelectStockObject(mb);
+
+	//plot ellipse with the create pen and selected brush
+	sPen.CreatePen(PS_SOLID,swid,scol);
+	oPen=pDc->SelectObject(&sPen);
+	pDc->Ellipse(left,top,right,left);
+
+	pDc->SelectObject(oPen);
+	pDc->SelectObject(pBrush);
+	sPen.DeleteObject();
+	return;
 }
 
 #endif //_DEBUG
