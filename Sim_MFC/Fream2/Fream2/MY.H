@@ -17,18 +17,20 @@ public:
 class CMyFrameWnd : public CFrameWnd
 {
 public:
+	DECLARE_DYNCREATE(CMyFrameWnd)
   CMyFrameWnd();
-  ~CMyFrameWnd()  {
-                  }
+  ~CMyFrameWnd()  { }
+  void Response() const;
 };
 
 class CMyDoc : public CDocument
 {
-DECLARE_DYNAMIC(CMyDoc)
+DECLARE_DYNCREATE(CMyDoc)
 private:
 	LPSTR DocName;
 
 public:
+	CMyDoc() {DocName="Justice";}
 	CMyDoc(char* namestr){DocName=(LPSTR)namestr;}
 };
 

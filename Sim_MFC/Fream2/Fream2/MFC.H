@@ -5,8 +5,11 @@
 typedef char* LPSTR;
 #define UINT unsigned int
 #define PASCAL _stdcall
+#define TRACE1 printf
 
 #include <iostream>
+#include <stdio.h>
+#include <string.h>
 using namespace std;
 
 class CObject;
@@ -73,6 +76,7 @@ public:
 
   virtual CRuntimeClass* GetRuntimeClass() const;
   virtual BOOL IsKindof(const CRuntimeClass* pClass) const;
+  virtual void Response() const;
 
 public:
 	static CRuntimeClass classCObject;
@@ -146,13 +150,15 @@ public:
                            }
   CDocument::~CDocument()  {
                            }
+  void Response() const;
 };
 
 
 class CWnd : public CCmdTarget
 {
 public:
-	DECLARE_DYNAMIC(CWnd)
+	//DECLARE_DYNAMIC(CWnd)
+	DECLARE_DYNCREATE(CWnd)
   CWnd::CWnd()   {
                  }
   CWnd::~CWnd()  {
@@ -161,18 +167,21 @@ public:
   virtual BOOL Create();
   BOOL CreateEx();
   virtual BOOL PreCreateWindow();
+  virtual void Response() const;
 };
 
 class CFrameWnd : public CWnd
 {
 public:
-	DECLARE_DYNAMIC(CFrameWnd)
+	//DECLARE_DYNAMIC(CFrameWnd)
+	DECLARE_DYNCREATE(CFrameWnd)
   CFrameWnd::CFrameWnd()   {
                            }
   CFrameWnd::~CFrameWnd()  {
                            }
   BOOL Create();
   virtual BOOL PreCreateWindow();
+  virtual void Response() const;
 };
 
 class CView : public CWnd

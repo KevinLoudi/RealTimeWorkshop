@@ -15,8 +15,14 @@ CMyFrameWnd::CMyFrameWnd()
     Create();
 }
 
-IMPLEMENT_DYNAMIC(CMyDoc,CDocument)
+void CMyFrameWnd::Response() const
+{
+	cout<<"Is an object of CMyFreameWnd class \n";
+}
+
+//IMPLEMENT_DYNAMIC(CMyDoc,CDocument)
 IMPLEMENT_DYNCREATE(CMyDoc,CDocument)
+IMPLEMENT_DYNCREATE(CMyFrameWnd,CFrameWnd)
 //------------------------------------------------------------------
 // main
 //------------------------------------------------------------------
@@ -39,8 +45,23 @@ void main()
 	{
 		//Test dynamic creation
 		cout<<"Test dynamic creation \n";
-		CRuntimeClass* pClassRef;
-		CObject* pOb;
+		CRuntimeClass* pClassRef=NULL;
+		CObject* pOb=NULL;
+
+		for (;;)
+		{
+			if ((pClassRef->Load())==NULL)
+			{
+				break;
+			}
+
+			pOb=pClassRef->CreateObject();
+
+			if (pOb!=NULL)
+			{
+				pOb->Response();
+			}
+		}
 	}
 
 	getchar();
