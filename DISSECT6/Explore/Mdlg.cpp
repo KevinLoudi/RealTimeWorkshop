@@ -5,6 +5,8 @@
 #include "Explore.h"
 #include "Mdlg.h"
 
+
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -59,14 +61,15 @@ BOOL CMdlg::OnInitDialog()
 	              // EXCEPTION: OCX Property Pages should return FALSE
 }
 
-class CAboutDlg;
+//#include "Explore.h"
+//class CAboutDlg;
 
 void CMdlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID& 0xFFF0)==IDM_ABOUTBOX)
 	{
-		CAboutDlg dlgAbout;
-		dlgAbout.DoModal();
+		//CAboutDlg dlgAbout;
+		//dlgAbout.DoModal();
 	}
 	else if(IDM_VER==(nID & 0xFFF0))
 	{

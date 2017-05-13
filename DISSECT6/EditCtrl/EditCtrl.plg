@@ -1,0 +1,34 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: EditCtrl - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP87F0.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/EditCtrl.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\EditCtrl\EditCtrl.cpp"
+"D:\Code\Techjoin\DISSECT6\EditCtrl\EditCtrlDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP87F0.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/EditCtrl.pdb" /debug /machine:I386 /out:"Debug/EditCtrl.exe" /pdbtype:sept  .\Debug\EditCtrl.obj .\Debug\EditCtrlDlg.obj .\Debug\StdAfx.obj .\Debug\EditCtrl.res "
+<h3>Output Window</h3>
+Compiling...
+EditCtrlDlg.cpp
+Generating Code...
+Skipping... (no relevant changes detected)
+EditCtrl.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/EditCtrl.bsc"  .\Debug\StdAfx.sbr .\Debug\EditCtrl.sbr .\Debug\EditCtrlDlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+EditCtrl.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
