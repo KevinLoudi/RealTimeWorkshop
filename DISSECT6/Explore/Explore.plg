@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Explore - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP92B8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Explore.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\Explore\Mdlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP92B8.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP92C8.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Explore.pdb" /debug /machine:I386 /out:"Debug/Explore.exe" /pdbtype:sept 
+.\Debug\Explore.obj
+.\Debug\StdAfx.obj
+.\Debug\MainFrm.obj
+.\Debug\ExploreDoc.obj
+.\Debug\ExploreView.obj
+.\Debug\Explore.res
+.\Debug\Mdlg.obj
+]
+Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSP92C8.tmp"
+<h3>Output Window</h3>
+Compiling...
+Mdlg.cpp
+D:\Code\Techjoin\DISSECT6\Explore\Mdlg.cpp(68) : error C2079: 'dlgAbout' uses undefined class 'CAboutDlg'
+D:\Code\Techjoin\DISSECT6\Explore\Mdlg.cpp(69) : error C2228: left of '.DoModal' must have class/struct/union type
+Error executing cl.exe.
+Creating command line "bscmake.exe /nologo /o"Debug/Explore.bsc"  .\Debug\StdAfx.sbr .\Debug\Explore.sbr .\Debug\MainFrm.sbr .\Debug\ExploreDoc.sbr .\Debug\ExploreView.sbr .\Debug\Mdlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Explore.exe - 2 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

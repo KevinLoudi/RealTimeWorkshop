@@ -3,8 +3,9 @@
 //
 
 #include "stdafx.h"
-#include "VisibleAlogrithm.h"
-#include "VisibleAlogrithmView.h"
+#include "NotePad.h"
+
+#include "MainFrm.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -24,14 +25,20 @@ BEGIN_MESSAGE_MAP(CMainFrame, CFrameWndEx)
 	ON_REGISTERED_MESSAGE(AFX_WM_CREATETOOLBAR, &CMainFrame::OnToolbarCreateNew)
 	ON_COMMAND_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_OFF_2007_AQUA, &CMainFrame::OnApplicationLook)
 	ON_UPDATE_COMMAND_UI_RANGE(ID_VIEW_APPLOOK_WIN_2000, ID_VIEW_APPLOOK_OFF_2007_AQUA, &CMainFrame::OnUpdateApplicationLook)
+	ON_WM_TIMER()
+	ON_WM_DESTROY()
+	ON_COMMAND(ID_SHOW_TIME, &CMainFrame::OnShowTime)
+	ON_UPDATE_COMMAND_UI(ID_SHOW_TIME, &CMainFrame::OnUpdateShowTime)
 END_MESSAGE_MAP()
 
 static UINT indicators[] =
 {
 	ID_SEPARATOR,           // status line indicator
-	ID_INDICATOR_CAPS,
-	ID_INDICATOR_NUM,
-	ID_INDICATOR_SCRL,
+	IDS_CUR_TIMER,
+
+	//ID_INDICATOR_CAPS,
+	//ID_INDICATOR_NUM,
+	//ID_INDICATOR_SCRL,
 };
 
 // CMainFrame construction/destruction
@@ -40,10 +47,26 @@ CMainFrame::CMainFrame()
 {
 	// TODO: add member initialization code here
 	theApp.m_nAppLook = theApp.GetInt(_T("ApplicationLook"), ID_VIEW_APPLOOK_VS_2005);
+
+	m_bShowTime=true;
 }
 
 CMainFrame::~CMainFrame()
 {
+}
+
+void CMainFrame::ShowTime()
+{
+	if (m_bShowTime)
+	{
+		CTime t=CTime::GetCurrentTime();
+		CString strTime=t.Format("%H: %M: %S"); //%Y-%m-%d 
+		m_wndStatusBar.SetPaneText(1,strTime);
+	}
+	else
+	{
+		m_wndStatusBar.SetPaneText(1,"");
+	}
 }
 
 int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
@@ -86,14 +109,19 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	// Allow user-defined toolbars operations:
 	InitUserToolbars(NULL, uiFirstUserToolBarId, uiLastUserToolBarId);
 
-	if (!m_wndStatusBar.Create(this))
+	if (!m_wndStatusBar.Create(this)||
+		!m_wndStatusBar.SetIndicators(indicators,sizeof(indicators)/sizeof(UINT)))
 	{
 		TRACE0("Failed to create status bar\n");
 		return -1;      // fail to create
 	}
+	//m_wndStatusBar.SetPaneText(1,"Welcome to the NotePad, Author: Kevin");
+	m_wndStatusBar.SetPaneInfo(1,ID_SEPARATOR,SBPS_NORMAL,160);
+	m_uTimer=SetTimer(1,1000,NULL);
 	m_wndStatusBar.SetIndicators(indicators, sizeof(indicators)/sizeof(UINT));
 
 	// TODO: Delete these five lines if you don't want the toolbar and menubar to be dockable
+	//dock position of toolbar
 	m_wndMenuBar.EnableDocking(CBRS_ALIGN_ANY);
 	m_wndToolBar.EnableDocking(CBRS_ALIGN_ANY);
 	EnableDocking(CBRS_ALIGN_ANY);
@@ -145,6 +173,8 @@ int CMainFrame::OnCreate(LPCREATESTRUCT lpCreateStruct)
 	lstBasicCommands.AddTail(ID_VIEW_APPLOOK_OFF_2007_AQUA);
 
 	CMFCToolBar::SetBasicCommands(lstBasicCommands);
+
+	//create tool control
 
 	return 0;
 }
@@ -296,3 +326,38 @@ BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParent
 	return TRUE;
 }
 
+//Timer
+void CMainFrame::OnTimer(UINT_PTR nIDEvent)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	if (nIDEvent==m_uTimer)
+	{
+		ShowTime();
+	}
+
+	CFrameWndEx::OnTimer(nIDEvent);
+}
+
+void CMainFrame::OnDestroy()
+{
+	// TODO: 在此处添加消息处理程序代码
+	if (m_uTimer!=0)
+	{
+		KillTimer(m_uTimer);
+	}
+
+	CFrameWndEx::OnDestroy();
+}
+
+void CMainFrame::OnShowTime()
+{
+	// TODO: 在此添加命令处理程序代码
+	m_bShowTime=!m_bShowTime;
+	ShowTime();
+}
+
+void CMainFrame::OnUpdateShowTime(CCmdUI *pCmdUI)
+{
+	// TODO: 在此添加命令更新用户界面处理程序代码
+	pCmdUI->SetCheck(m_bShowTime); //enable "show time"
+}

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
-<Properties><Property Name="Solution" Value="GENERIC">
-</Property><Property Name="解决方案文件" Value="D:\Code\Techjoin\Sim_MFC\Generic\Generic\GENERIC.sln">
-</Property><Property Name="Date" Value="2017年5月9日">
-</Property><Property Name="Time" Value="13:52:31">
-</Property></Properties><Event ErrorLevel="2" Project="D:\Code\Techjoin\Sim_MFC\Generic\Generic\GENERIC.MAK" Source="GENERIC" Description="因项目文件已损坏而无法加载该项目。">
-</Event><Event ErrorLevel="2" Project="GENERIC" Source="GENERIC.MAK" Description="项目升级失败。">
-</Event><Event ErrorLevel="3" Project="GENERIC" Source="GENERIC.MAK" Description="未转换">
-</Event></UpgradeLog>

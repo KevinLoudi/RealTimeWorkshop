@@ -3,8 +3,11 @@
 //
 
 #include "stdafx.h"
-#include "VisibleAlogrithm.h"
-#include "VisibleAlogrithmView.h"
+#include "SingalDoc.h"
+
+#include "MainFrm.h"
+#include "OutputView.h"
+#include "SingalDocView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -296,3 +299,23 @@ BOOL CMainFrame::LoadFrame(UINT nIDResource, DWORD dwDefaultStyle, CWnd* pParent
 	return TRUE;
 }
 
+
+BOOL CMainFrame::OnCreateClient(LPCREATESTRUCT lpcs, CCreateContext* pContext)
+{
+	// TODO: 在此添加专用代码和/或调用基类
+	//split view window
+	if (!m_wndSplitter.CreateStatic(this,1,2))
+	{
+		return FALSE;
+	}
+
+	if (!m_wndSplitter.CreateView(0,0,RUNTIME_CLASS(CSingalDocView),CSize(500,100),pContext)||
+		!m_wndSplitter.CreateView(0,1,RUNTIME_CLASS(COutputView),CSize(500,100),pContext))
+	{
+		//fail to initial splitter window
+		m_wndSplitter.DestroyWindow();
+		return FALSE;
+	}
+
+	return CFrameWndEx::OnCreateClient(lpcs, pContext);
+}

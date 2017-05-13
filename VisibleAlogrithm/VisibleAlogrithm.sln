@@ -1,14 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VisibleAlogrithm", "VisibleAlogrithm\VisibleAlogrithm.vcproj", "{58B7773E-07DA-4357-8BF2-6A05FF375740}"
-	ProjectSection(ProjectDependencies) = postProject
-		{E6CCCD12-5404-4A99-81C4-6D5B66A27653} = {E6CCCD12-5404-4A99-81C4-6D5B66A27653}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Test", "Test\Test.vcproj", "{93FA9B8F-CA63-4C81-8C6E-41A5FFDE3A22}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Package", "Package\Package.vcproj", "{E6CCCD12-5404-4A99-81C4-6D5B66A27653}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SingalDoc", "SingalDoc\SingalDoc.vcproj", "{D01C7E9C-533E-453E-B622-82B76D49FE19}"
+	ProjectSection(ProjectDependencies) = postProject
+		{E6CCCD12-5404-4A99-81C4-6D5B66A27653} = {E6CCCD12-5404-4A99-81C4-6D5B66A27653}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +16,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{58B7773E-07DA-4357-8BF2-6A05FF375740}.Debug|Win32.ActiveCfg = Debug|Win32
-		{58B7773E-07DA-4357-8BF2-6A05FF375740}.Debug|Win32.Build.0 = Debug|Win32
-		{58B7773E-07DA-4357-8BF2-6A05FF375740}.Release|Win32.ActiveCfg = Release|Win32
-		{58B7773E-07DA-4357-8BF2-6A05FF375740}.Release|Win32.Build.0 = Release|Win32
 		{93FA9B8F-CA63-4C81-8C6E-41A5FFDE3A22}.Debug|Win32.ActiveCfg = Debug|Win32
 		{93FA9B8F-CA63-4C81-8C6E-41A5FFDE3A22}.Debug|Win32.Build.0 = Debug|Win32
 		{93FA9B8F-CA63-4C81-8C6E-41A5FFDE3A22}.Release|Win32.ActiveCfg = Release|Win32
@@ -28,6 +24,10 @@ Global
 		{E6CCCD12-5404-4A99-81C4-6D5B66A27653}.Debug|Win32.Build.0 = Debug|Win32
 		{E6CCCD12-5404-4A99-81C4-6D5B66A27653}.Release|Win32.ActiveCfg = Release|Win32
 		{E6CCCD12-5404-4A99-81C4-6D5B66A27653}.Release|Win32.Build.0 = Release|Win32
+		{D01C7E9C-533E-453E-B622-82B76D49FE19}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D01C7E9C-533E-453E-B622-82B76D49FE19}.Debug|Win32.Build.0 = Debug|Win32
+		{D01C7E9C-533E-453E-B622-82B76D49FE19}.Release|Win32.ActiveCfg = Release|Win32
+		{D01C7E9C-533E-453E-B622-82B76D49FE19}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
