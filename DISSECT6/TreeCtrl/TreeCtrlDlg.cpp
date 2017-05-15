@@ -1,9 +1,9 @@
-// AlgorithmDlg.cpp : implementation file
+// TreeCtrlDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
-#include "Algorithm.h"
-#include "AlgorithmDlg.h"
+#include "TreeCtrl.h"
+#include "TreeCtrlDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -57,39 +57,38 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg dialog
+// CTreeCtrlDlg dialog
 
-CAlgorithmDlg::CAlgorithmDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CAlgorithmDlg::IDD, pParent)
+CTreeCtrlDlg::CTreeCtrlDlg(CWnd* pParent /*=NULL*/)
+	: CDialog(CTreeCtrlDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CAlgorithmDlg)
+	//{{AFX_DATA_INIT(CTreeCtrlDlg)
 		// NOTE: the ClassWizard will add member initialization here
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CAlgorithmDlg::DoDataExchange(CDataExchange* pDX)
+void CTreeCtrlDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CAlgorithmDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	//{{AFX_DATA_MAP(CTreeCtrlDlg)
+	DDX_Control(pDX, IDC_TREE_AREA, m_treeArea);
 	//}}AFX_DATA_MAP
 }
 
-BEGIN_MESSAGE_MAP(CAlgorithmDlg, CDialog)
-	//{{AFX_MSG_MAP(CAlgorithmDlg)
+BEGIN_MESSAGE_MAP(CTreeCtrlDlg, CDialog)
+	//{{AFX_MSG_MAP(CTreeCtrlDlg)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_UPDATE, OnUpdate)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg message handlers
+// CTreeCtrlDlg message handlers
 
-BOOL CAlgorithmDlg::OnInitDialog()
+BOOL CTreeCtrlDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
@@ -117,11 +116,22 @@ BOOL CAlgorithmDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 	
 	// TODO: Add extra initialization here
-	
+
+	HTREEITEM hRoot, hItem;
+
+	hRoot=m_treeArea.InsertItem("Shanxi");
+	hItem=m_treeArea.InsertItem("Taiyuan");
+
+	m_treeArea.InsertItem("linfen",hItem);
+	m_treeArea.Expand(hItem,TVE_EXPAND); //expand tree view
+
+	hItem=m_treeArea.InsertItem("Jinchen",hRoot);
+	m_treeArea.InsertItem("Xinshui",hItem);
+
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CTreeCtrlDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -138,7 +148,7 @@ void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CAlgorithmDlg::OnPaint() 
+void CTreeCtrlDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
@@ -165,15 +175,7 @@ void CAlgorithmDlg::OnPaint()
 
 // The system calls this to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CAlgorithmDlg::OnQueryDragIcon()
+HCURSOR CTreeCtrlDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
-}
-
-void CAlgorithmDlg::OnUpdate() 
-{
-	// TODO: Add your control notification handler code here
-	
-
-	
 }

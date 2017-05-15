@@ -1,24 +1,24 @@
-# Microsoft Developer Studio Project File - Name="Algorithm" - Package Owner=<4>
+# Microsoft Developer Studio Project File - Name="AdvCtrl" - Package Owner=<4>
 # Microsoft Developer Studio Generated Build File, Format Version 6.00
 # ** DO NOT EDIT **
 
 # TARGTYPE "Win32 (x86) Application" 0x0101
 
-CFG=Algorithm - Win32 Debug
+CFG=AdvCtrl - Win32 Debug
 !MESSAGE This is not a valid makefile. To build this project using NMAKE,
 !MESSAGE use the Export Makefile command and run
 !MESSAGE 
-!MESSAGE NMAKE /f "Algorithm.mak".
+!MESSAGE NMAKE /f "AdvCtrl.mak".
 !MESSAGE 
 !MESSAGE You can specify a configuration when running NMAKE
 !MESSAGE by defining the macro CFG on the command line. For example:
 !MESSAGE 
-!MESSAGE NMAKE /f "Algorithm.mak" CFG="Algorithm - Win32 Debug"
+!MESSAGE NMAKE /f "AdvCtrl.mak" CFG="AdvCtrl - Win32 Debug"
 !MESSAGE 
 !MESSAGE Possible choices for configuration are:
 !MESSAGE 
-!MESSAGE "Algorithm - Win32 Release" (based on "Win32 (x86) Application")
-!MESSAGE "Algorithm - Win32 Debug" (based on "Win32 (x86) Application")
+!MESSAGE "AdvCtrl - Win32 Release" (based on "Win32 (x86) Application")
+!MESSAGE "AdvCtrl - Win32 Debug" (based on "Win32 (x86) Application")
 !MESSAGE 
 
 # Begin Project
@@ -29,7 +29,7 @@ CPP=cl.exe
 MTL=midl.exe
 RSC=rc.exe
 
-!IF  "$(CFG)" == "Algorithm - Win32 Release"
+!IF  "$(CFG)" == "AdvCtrl - Win32 Release"
 
 # PROP BASE Use_MFC 6
 # PROP BASE Use_Debug_Libraries 0
@@ -54,7 +54,7 @@ LINK32=link.exe
 # ADD BASE LINK32 /nologo /subsystem:windows /machine:I386
 # ADD LINK32 /nologo /subsystem:windows /machine:I386
 
-!ELSEIF  "$(CFG)" == "Algorithm - Win32 Debug"
+!ELSEIF  "$(CFG)" == "AdvCtrl - Win32 Debug"
 
 # PROP BASE Use_MFC 6
 # PROP BASE Use_Debug_Libraries 1
@@ -83,31 +83,27 @@ LINK32=link.exe
 
 # Begin Target
 
-# Name "Algorithm - Win32 Release"
-# Name "Algorithm - Win32 Debug"
+# Name "AdvCtrl - Win32 Release"
+# Name "AdvCtrl - Win32 Debug"
 # Begin Group "Source Files"
 
 # PROP Default_Filter "cpp;c;cxx;rc;def;r;odl;idl;hpj;bat"
 # Begin Source File
 
-SOURCE=.\Algorithm.cpp
+SOURCE=.\AdvCtrl.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Algorithm.rc
+SOURCE=.\AdvCtrl.rc
 # End Source File
 # Begin Source File
 
-SOURCE=.\AlgorithmDlg.cpp
+SOURCE=.\AdvCtrlDlg.cpp
 # End Source File
 # Begin Source File
 
 SOURCE=.\StdAfx.cpp
 # ADD CPP /Yc"stdafx.h"
-# End Source File
-# Begin Source File
-
-SOURCE=.\Tree.cpp
 # End Source File
 # End Group
 # Begin Group "Header Files"
@@ -115,11 +111,11 @@ SOURCE=.\Tree.cpp
 # PROP Default_Filter "h;hpp;hxx;hm;inl"
 # Begin Source File
 
-SOURCE=.\Algorithm.h
+SOURCE=.\AdvCtrl.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\AlgorithmDlg.h
+SOURCE=.\AdvCtrlDlg.h
 # End Source File
 # Begin Source File
 
@@ -129,21 +125,17 @@ SOURCE=.\Resource.h
 
 SOURCE=.\StdAfx.h
 # End Source File
-# Begin Source File
-
-SOURCE=.\Tree.h
-# End Source File
 # End Group
 # Begin Group "Resource Files"
 
 # PROP Default_Filter "ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
 # Begin Source File
 
-SOURCE=.\res\Algorithm.ico
+SOURCE=.\res\AdvCtrl.ico
 # End Source File
 # Begin Source File
 
-SOURCE=.\res\Algorithm.rc2
+SOURCE=.\res\AdvCtrl.rc2
 # End Source File
 # End Group
 # Begin Source File

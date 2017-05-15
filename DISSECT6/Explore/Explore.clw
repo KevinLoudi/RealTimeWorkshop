@@ -18,11 +18,11 @@ ResourceCount=6
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_MAINFRAME
 Class5=CAboutDlg
-Resource3=IDR_MAINFRAME (English (U.S.))
+Resource3=IDD_MDIALOG
 Resource4=IDR_OPEN_MENU (English (U.S.))
 Resource5=IDD_ABOUTBOX (English (U.S.))
 Class6=CMdlg
-Resource6=IDD_MDIALOG
+Resource6=IDR_MAINFRAME (English (U.S.))
 
 [CLS:CExploreApp]
 Type=0

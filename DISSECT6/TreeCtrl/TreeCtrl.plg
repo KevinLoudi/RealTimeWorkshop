@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TreeCtrl - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPC529.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/TreeCtrl.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\TreeCtrl\TreeCtrl.cpp"
+"D:\Code\Techjoin\DISSECT6\TreeCtrl\TreeCtrlDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSPC529.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/TreeCtrl.pdb" /debug /machine:I386 /out:"Debug/TreeCtrl.exe" /pdbtype:sept  .\Debug\TreeCtrl.obj .\Debug\TreeCtrlDlg.obj .\Debug\StdAfx.obj .\Debug\TreeCtrl.res "
+<h3>Output Window</h3>
+Compiling...
+TreeCtrlDlg.cpp
+Generating Code...
+Compiling...
+TreeCtrl.cpp
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/TreeCtrl.bsc"  .\Debug\StdAfx.sbr .\Debug\TreeCtrl.sbr .\Debug\TreeCtrlDlg.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+TreeCtrl.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

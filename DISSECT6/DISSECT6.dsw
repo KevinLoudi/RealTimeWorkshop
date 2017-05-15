@@ -3,7 +3,31 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
+Project: "AdvCtrl"=.\AdvCtrl\AdvCtrl.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "Algorithm"=.\Algorithm\Algorithm.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CommonMethods"=.\CommonMethods\CommonMethods.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
@@ -39,7 +63,7 @@ Package=<4>
 
 ###############################################################################
 
-Project: "PCombox"=.\PCombox\PCombox.dsp - Package Owner=<4>
+Project: "TreeCtrl"=.\TreeCtrl\TreeCtrl.dsp - Package Owner=<4>
 
 Package=<5>
 {{{
