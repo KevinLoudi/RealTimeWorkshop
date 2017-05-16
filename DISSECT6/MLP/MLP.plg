@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MLP - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/MLP.res" /d "_DEBUG" /d "_AFXDLL" "D:\Code\Techjoin\DISSECT6\MLP\MLP.rc"" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPCE83.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MLP.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\MLP\MLP.cpp"
+"D:\Code\Techjoin\DISSECT6\MLP\MainFrm.cpp"
+"D:\Code\Techjoin\DISSECT6\MLP\ChildFrm.cpp"
+"D:\Code\Techjoin\DISSECT6\MLP\MLPDoc.cpp"
+"D:\Code\Techjoin\DISSECT6\MLP\MLPView.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSPCE83.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPCE84.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MLP.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\MLP\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSPCE84.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPCE95.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MLP.pdb" /debug /machine:I386 /out:"Debug/MLP.exe" /pdbtype:sept 
+.\Debug\MLP.obj
+.\Debug\StdAfx.obj
+.\Debug\MainFrm.obj
+.\Debug\ChildFrm.obj
+.\Debug\MLPDoc.obj
+.\Debug\MLPView.obj
+.\Debug\MLP.res
+]
+Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSPCE95.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MLP.cpp
+MainFrm.cpp
+ChildFrm.cpp
+MLPDoc.cpp
+MLPView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MLP.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
