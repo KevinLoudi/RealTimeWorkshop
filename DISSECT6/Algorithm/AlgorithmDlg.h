@@ -19,7 +19,7 @@ class CAlgorithmDlg : public CDialog
 public:
 	CAlgorithmDlg(CWnd* pParent = NULL);	// standard constructor
 
-	BinaryTree<CString> strTree;
+	//BinaryTree<CString> strTree;
 
 // Dialog Data
 	//{{AFX_DATA(CAlgorithmDlg)

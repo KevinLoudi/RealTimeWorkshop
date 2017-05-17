@@ -1,12 +1,11 @@
-// AlgorithmDlg.cpp : implementation file
+// AarchiveDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
-#include "Algorithm.h"
-#include "AlgorithmDlg.h"
+#include "Aarchive.h"
+#include "AarchiveDlg.h"
 
-#include "Tree.h"
-#include "Linklist.h"
+#include "WorkerInfo.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -60,39 +59,48 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg dialog
+// CAarchiveDlg dialog
 
-CAlgorithmDlg::CAlgorithmDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CAlgorithmDlg::IDD, pParent)
+CAarchiveDlg::CAarchiveDlg(CWnd* pParent /*=NULL*/)
+	: CDialog(CAarchiveDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CAlgorithmDlg)
-		// NOTE: the ClassWizard will add member initialization here
+	//{{AFX_DATA_INIT(CAarchiveDlg)
+	m_strName = _T("");
+	m_strJnum = _T("");
+	m_uintPay = 0;
+	m_strPos = _T("");
+	m_strRemark = _T("");
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CAlgorithmDlg::DoDataExchange(CDataExchange* pDX)
+void CAarchiveDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CAlgorithmDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	//{{AFX_DATA_MAP(CAarchiveDlg)
+	DDX_Text(pDX, IDC_EDIT_NAME, m_strName);
+	DDX_Text(pDX, IDC_EDIT_NUM, m_strJnum);
+	DDX_Text(pDX, IDC_EDIT_PAY, m_uintPay);
+	DDX_Text(pDX, IDC_EDIT_POS, m_strPos);
+	DDX_Text(pDX, IDC_EDIT_REMARK, m_strRemark);
 	//}}AFX_DATA_MAP
 }
 
-BEGIN_MESSAGE_MAP(CAlgorithmDlg, CDialog)
-	//{{AFX_MSG_MAP(CAlgorithmDlg)
+BEGIN_MESSAGE_MAP(CAarchiveDlg, CDialog)
+	//{{AFX_MSG_MAP(CAarchiveDlg)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_UPDATE, OnUpdate)
+	ON_BN_CLICKED(IDC_BUTTON_READ, OnButtonRead)
+	ON_BN_CLICKED(IDC_BUTTON_SAVE, OnButtonSave)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg message handlers
+// CAarchiveDlg message handlers
 
-BOOL CAlgorithmDlg::OnInitDialog()
+BOOL CAarchiveDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
@@ -124,7 +132,7 @@ BOOL CAlgorithmDlg::OnInitDialog()
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CAarchiveDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -141,7 +149,7 @@ void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CAlgorithmDlg::OnPaint() 
+void CAarchiveDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
@@ -168,15 +176,46 @@ void CAlgorithmDlg::OnPaint()
 
 // The system calls this to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CAlgorithmDlg::OnQueryDragIcon()
+HCURSOR CAarchiveDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
 }
 
-void CAlgorithmDlg::OnUpdate() 
+void CAarchiveDlg::OnButtonRead() 
 {
 	// TODO: Add your control notification handler code here
-	
+	CFile file(TMPTEXT, CFile::modeRead);
 
+	CArchive ar(&file,CArchive::load);
+
+	//in the same order with save
+	//ar>>m_strName>>m_strJnum>>m_strPos>>m_uintPay>>m_strRemark;
+	CWorkerInfo* wrInfo;
+	ar>>wrInfo;
+	wrInfo->ReadInfo(m_strName,m_strJnum,
+		m_uintPay,m_strPos,m_strRemark);
+
+	UpdateData(FALSE);
+	
+}
+
+void CAarchiveDlg::OnButtonSave() 
+{
+	// TODO: Add your control notification handler code here
+	UpdateData(TRUE);
+	
+	//file object
+	CFile file(TMPTEXT, CFile::modeCreate|CFile::modeWrite);
+	
+	//archive object
+	CArchive ar(&file, CArchive::store);
+	
+	//save in the file
+	//ar<<m_strName<<m_strJnum<<m_strPos<<m_uintPay<<m_strRemark;
+	CWorkerInfo wrInfo;
+	wrInfo.SaveInfo(m_strName,m_strJnum,m_uintPay,m_strPos,
+		m_strRemark);
+
+	ar<<&wrInfo;
 	
 }

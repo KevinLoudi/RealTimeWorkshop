@@ -6,15 +6,15 @@
 --------------------Configuration: FILE - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating command line "rc.exe /l 0x804 /fo"Debug/FILE.res" /d "_DEBUG" /d "_AFXDLL" "D:\Code\Techjoin\DISSECT6\FILE\FILE.rc"" 
-Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP6478.tmp" with contents
+Creating command line "rc.exe /l 0x804 /fo"Debug/FILE.res" /d "_DEBUG" /d "_AFXDLL" "D:\CODE\TECHJOIN\DISSECT6\FILE\FILE.rc"" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP6949.tmp" with contents
 [
-/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FILE.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
-"D:\Code\Techjoin\DISSECT6\FILE\FILE.cpp"
-"D:\Code\Techjoin\DISSECT6\FILE\FILEDlg.cpp"
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FILE.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\CODE\TECHJOIN\DISSECT6\FILE\FILE.cpp"
+"D:\CODE\TECHJOIN\DISSECT6\FILE\FILEDlg.cpp"
 ]
-Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP6478.tmp" 
-Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/FILE.pdb" /debug /machine:I386 /out:"Debug/FILE.exe" /pdbtype:sept  .\Debug\FILE.obj .\Debug\FILEDlg.obj .\Debug\StdAfx.obj .\Debug\FILE.res "
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP6949.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/FILE.pdb" /debug /machine:I386 /out:"Debug/FILE.exe" /pdbtype:sept  .\Debug\FILE.obj .\Debug\FILEDlg.obj .\Debug\StdAfx.obj .\Debug\FILE.res .\Debug\StudInfo.obj "
 <h3>Output Window</h3>
 Compiling resources...
 Compiling...
@@ -23,7 +23,7 @@ Generating Code...
 Skipping... (no relevant changes detected)
 FILE.cpp
 Linking...
-Creating command line "bscmake.exe /nologo /o"Debug/FILE.bsc"  .\Debug\StdAfx.sbr .\Debug\FILE.sbr .\Debug\FILEDlg.sbr"
+Creating command line "bscmake.exe /nologo /o"Debug/FILE.bsc"  .\Debug\StdAfx.sbr .\Debug\FILE.sbr .\Debug\FILEDlg.sbr .\Debug\StudInfo.sbr"
 Creating browse info file...
 <h3>Output Window</h3>
 

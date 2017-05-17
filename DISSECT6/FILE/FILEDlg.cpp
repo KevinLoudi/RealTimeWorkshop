@@ -8,6 +8,7 @@
 //IO File stream
 #include "string"
 #include "fstream"
+#include "StudInfo.h"
 using namespace std;
 
 #ifdef _DEBUG
@@ -69,6 +70,9 @@ CFILEDlg::CFILEDlg(CWnd* pParent /*=NULL*/)
 {
 	//{{AFX_DATA_INIT(CFILEDlg)
 	m_strText = _T("");
+	m_strMajor = _T("");
+	m_strName = _T("");
+	m_strNumber = _T("");
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
@@ -80,6 +84,9 @@ void CFILEDlg::DoDataExchange(CDataExchange* pDX)
 	//{{AFX_DATA_MAP(CFILEDlg)
 	DDX_Text(pDX, IDC_EDIT_TEXT, m_strText);
 	DDV_MaxChars(pDX, m_strText, 1000);
+	DDX_Text(pDX, IDC_EDIT_MAJOR, m_strMajor);
+	DDX_Text(pDX, IDC_EDIT_NAME, m_strName);
+	DDX_Text(pDX, IDC_EDIT_NUMBER, m_strNumber);
 	//}}AFX_DATA_MAP
 }
 
@@ -92,6 +99,11 @@ BEGIN_MESSAGE_MAP(CFILEDlg, CDialog)
 	ON_BN_CLICKED(IDC_BUTTON_SAVE, OnButtonSave)
 	ON_BN_CLICKED(IDC_BUTTON_I, OnButtonI)
 	ON_BN_CLICKED(IDC_BUTTON_O, OnButtonO)
+	ON_BN_CLICKED(IDC_BUTTON_MFCO, OnButtonMfco)
+	ON_BN_CLICKED(IDC_BUTTON_MFCI, OnButtonMfci)
+	ON_BN_CLICKED(IDC_BUTTON_EMPTY, OnButtonEmpty)
+	ON_BN_CLICKED(IDC_BUTTON_SYSI, OnButtonSysi)
+	ON_BN_CLICKED(IDC_BUTTON_SYSO, OnButtonSyso)
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
@@ -269,5 +281,101 @@ void CFILEDlg::OnButtonO()
 	file<<str;
 
 	file.close();
+	
+}
+
+void CFILEDlg::OnButtonMfco() 
+{
+	// TODO: Add your control notification handler code here
+	CFile file(TMPDATA,CFile::modeCreate|CFile::modeWrite);
+
+	UpdateData(TRUE);//control->realted variables
+
+	StudInfo stu;
+
+	stu.CstrToChar(stu.m_name, m_strName, 10);
+	stu.CstrToChar(stu.m_num, m_strNumber, 15);
+	stu.CstrToChar(stu.m_major, m_strMajor, 20);
+
+	file.Write(&stu, sizeof(stu));
+
+	file.Close();
+	
+}
+
+void CFILEDlg::OnButtonMfci() 
+{
+	// TODO: Add your control notification handler code here
+	CFile file(TMPDATA, CFile::modeRead);
+	StudInfo stu;
+
+	file.Read(&stu, sizeof(stu));
+
+	file.Close();
+
+	m_strName=stu.m_name;
+	m_strNumber=stu.m_num;
+	m_strMajor=stu.m_major;
+
+	UpdateData(FALSE); //related variables -> control
+	
+}
+
+void CFILEDlg::OnButtonEmpty() 
+{
+	// TODO: Add your control notification handler code here
+	m_strMajor="";
+	m_strName="";
+	m_strNumber="";
+	UpdateData(FALSE);
+	
+}
+
+void CFILEDlg::OnButtonSysi() 
+{
+	// TODO: Add your control notification handler code here
+	CFileDialog fileDlg(TRUE);
+
+	if (fileDlg.DoModal()==IDOK)
+	{
+		//user-defined save-read path
+		CFile file(fileDlg.GetPathName(), CFile::modeRead);
+		StudInfo stu;
+		
+		file.Read(&stu, sizeof(stu));
+		
+		file.Close();
+		
+		m_strName=stu.m_name;
+		m_strNumber=stu.m_num;
+		m_strMajor=stu.m_major;
+		
+		UpdateData(FALSE); //related variables -> control
+
+	}
+	
+}
+
+void CFILEDlg::OnButtonSyso() 
+{
+	// TODO: Add your control notification handler code here
+	CFileDialog fileDlg(FALSE);
+
+	if (fileDlg.DoModal()==IDOK)
+	{
+		CFile file(fileDlg.GetPathName(),CFile::modeCreate|CFile::modeWrite);
+		
+		UpdateData(TRUE);//control->realted variables
+		
+		StudInfo stu;
+		
+		stu.CstrToChar(stu.m_name, m_strName, 10);
+		stu.CstrToChar(stu.m_num, m_strNumber, 15);
+		stu.CstrToChar(stu.m_major, m_strMajor, 20);
+		
+		file.Write(&stu, sizeof(stu));
+		
+		file.Close();
+	}
 	
 }
