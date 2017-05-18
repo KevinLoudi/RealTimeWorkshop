@@ -1,13 +1,9 @@
-// AlgorithmDlg.cpp : implementation file
+// WorkerThreadDlg.cpp : implementation file
 //
 
 #include "stdafx.h"
-#include "Algorithm.h"
-#include "AlgorithmDlg.h"
-
-#include "Tree.h"
-#include "Linklist.h"
-#include "Graph.h"
+#include "WorkerThread.h"
+#include "WorkerThreadDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -17,6 +13,21 @@ static char THIS_FILE[] = __FILE__;
 
 /////////////////////////////////////////////////////////////////////////////
 // CAboutDlg dialog used for App About
+
+progressInfo Info;
+
+UINT ThreadProc(LPVOID pParam)
+{
+	progressInfo* pInfo=(progressInfo*)pParam;
+
+	for (int i=0; i<100; ++i)
+	{
+		pInfo->pPc->SetPos(i);
+		Sleep(pInfo->time);
+	}
+
+	return 0;
+}
 
 class CAboutDlg : public CDialog
 {
@@ -61,39 +72,40 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialog)
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg dialog
+// CWorkerThreadDlg dialog
 
-CAlgorithmDlg::CAlgorithmDlg(CWnd* pParent /*=NULL*/)
-	: CDialog(CAlgorithmDlg::IDD, pParent)
+CWorkerThreadDlg::CWorkerThreadDlg(CWnd* pParent /*=NULL*/)
+	: CDialog(CWorkerThreadDlg::IDD, pParent)
 {
-	//{{AFX_DATA_INIT(CAlgorithmDlg)
+	//{{AFX_DATA_INIT(CWorkerThreadDlg)
 		// NOTE: the ClassWizard will add member initialization here
 	//}}AFX_DATA_INIT
 	// Note that LoadIcon does not require a subsequent DestroyIcon in Win32
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
 
-void CAlgorithmDlg::DoDataExchange(CDataExchange* pDX)
+void CWorkerThreadDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialog::DoDataExchange(pDX);
-	//{{AFX_DATA_MAP(CAlgorithmDlg)
-		// NOTE: the ClassWizard will add DDX and DDV calls here
+	//{{AFX_DATA_MAP(CWorkerThreadDlg)
+	DDX_Control(pDX, IDC_PROGRESS, m_progress);
 	//}}AFX_DATA_MAP
 }
 
-BEGIN_MESSAGE_MAP(CAlgorithmDlg, CDialog)
-	//{{AFX_MSG_MAP(CAlgorithmDlg)
+BEGIN_MESSAGE_MAP(CWorkerThreadDlg, CDialog)
+	//{{AFX_MSG_MAP(CWorkerThreadDlg)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
-	ON_BN_CLICKED(IDC_UPDATE, OnUpdate)
+	ON_BN_CLICKED(IDC_BUTTON_START, OnButtonStart)
+	ON_WM_LBUTTONDOWN()
 	//}}AFX_MSG_MAP
 END_MESSAGE_MAP()
 
 /////////////////////////////////////////////////////////////////////////////
-// CAlgorithmDlg message handlers
+// CWorkerThreadDlg message handlers
 
-BOOL CAlgorithmDlg::OnInitDialog()
+BOOL CWorkerThreadDlg::OnInitDialog()
 {
 	CDialog::OnInitDialog();
 
@@ -125,7 +137,7 @@ BOOL CAlgorithmDlg::OnInitDialog()
 	return TRUE;  // return TRUE  unless you set the focus to a control
 }
 
-void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
+void CWorkerThreadDlg::OnSysCommand(UINT nID, LPARAM lParam)
 {
 	if ((nID & 0xFFF0) == IDM_ABOUTBOX)
 	{
@@ -142,7 +154,7 @@ void CAlgorithmDlg::OnSysCommand(UINT nID, LPARAM lParam)
 //  to draw the icon.  For MFC applications using the document/view model,
 //  this is automatically done for you by the framework.
 
-void CAlgorithmDlg::OnPaint() 
+void CWorkerThreadDlg::OnPaint() 
 {
 	if (IsIconic())
 	{
@@ -169,13 +181,24 @@ void CAlgorithmDlg::OnPaint()
 
 // The system calls this to obtain the cursor to display while the user drags
 //  the minimized window.
-HCURSOR CAlgorithmDlg::OnQueryDragIcon()
+HCURSOR CWorkerThreadDlg::OnQueryDragIcon()
 {
 	return (HCURSOR) m_hIcon;
 }
 
-void CAlgorithmDlg::OnUpdate() 
+void CWorkerThreadDlg::OnButtonStart() 
 {
 	// TODO: Add your control notification handler code here
+	Info.time=100;
+	Info.pPc=&m_progress;
+	CWinThread *pThread=AfxBeginThread(ThreadProc, &Info);
 	
+}
+
+void CWorkerThreadDlg::OnLButtonDown(UINT nFlags, CPoint point) 
+{
+	// TODO: Add your message handler code here and/or call default
+	AfxMessageBox("Click");
+	
+	CDialog::OnLButtonDown(nFlags, point);
 }

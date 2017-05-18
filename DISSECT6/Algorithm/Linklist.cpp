@@ -13,21 +13,28 @@ static char THIS_FILE[]=__FILE__;
 #endif
 
 #include "Linklist.h"
+//initial am empty list
 template<class DT>  
 LinkedList<DT>::LinkedList()  
 {  
     start = current = NULL;  
 }  
+
+//initial a list with another
 template<class DT>  
 LinkedList<DT>::LinkedList(const LinkedList<DT> &aplist)  
 {  
     deepCopy(aplist);  
 }  
+
+//destory a list
 template<class DT>  
 LinkedList<DT>::~LinkedList()  
 {  
     makeEmpty();  
 }  
+
+//
 template<class DT>  
 LinkedList<DT>& LinkedList<DT>::operator =(const LinkedList<DT> &rlist)  
 {  
@@ -37,7 +44,8 @@ LinkedList<DT>& LinkedList<DT>::operator =(const LinkedList<DT> &rlist)
     deepCopy(rlist);  
     return this;  
 }  
-//在链表的表头插入DT &element，插入后没有当前位置  
+
+// head insert, "current" position has been moved
 template<class DT>  
 void LinkedList<DT>::insert(const DT &element)  
 {  
@@ -46,8 +54,9 @@ void LinkedList<DT>::insert(const DT &element)
     NNode->info = element;  
     NNode->next = start;  
     start = NNode;  
-}  
-////在链表的尾部插入  
+} 
+ 
+//tail insert,"current" position has been moved  
 template<class DT>  
 void LinkedList<DT>::insert_end(const DT &element)  
 {  
@@ -57,12 +66,16 @@ void LinkedList<DT>::insert_end(const DT &element)
     NNode->next = NULL;  
     Node<DT> *temp;  
     DT item;  
+
+	//for null list
     if(start == NULL)  
     {  
         start = NNode;  
         temp = start;  
         return;  
     }  
+
+	//for one-node list
     temp = start;  
     while(temp->next != NULL)  
     {  
@@ -70,7 +83,8 @@ void LinkedList<DT>::insert_end(const DT &element)
     }  
     temp->next = NNode;  
 }  
-//把链表中的第一个元素存放在listEl中，并且把第一个元素的位置置为current  
+
+//put the head node in listEI  
 template<class DT>  
 bool LinkedList<DT>::first(DT &listEl)  
 {  
@@ -80,12 +94,16 @@ bool LinkedList<DT>::first(DT &listEl)
     listEl = start->info;   
     return true;  
 }  
-//把链表中current的下个元素放在listEl中，current指向下一个元素  
+
+//get next node of current in listEI
 template<class DT>  
 bool LinkedList<DT>::getNext(DT &listEl)  
 {  
+	//empty list
     if(current == NULL)  
         return false;  
+
+	//one-node list
     if(current->next == NULL)  
     {  
         current = NULL;  
@@ -95,27 +113,32 @@ bool LinkedList<DT>::getNext(DT &listEl)
     current = current->next;  
     return true;  
 }  
-//如果找到elment，返回true,current在getNext()中设置  
+
+//check if element exist
 template<class DT>  
 bool LinkedList<DT>::find(const DT &element)  
 {  
     DT item;  
     if(!first(item))  
-        return false;  //检查是否为空  
+        return false;  //check if list is empty 
     do{  
         if(item == element)  
             return true;  
     }while(getNext(item));  
     return false;  
 }  
+
+//find and get element
 template<class DT>  
 bool LinkedList<DT>::retrieve(DT &element)  
 {  
     if(!find(element))  
         return false;  
-    element = current->info;  
+    element = current->info;  //???
     return true;  
 }  
+
+//replace element 
 template<class DT>  
 bool LinkedList<DT>::replace(const DT &newElement)  
 {  
@@ -124,6 +147,8 @@ bool LinkedList<DT>::replace(const DT &newElement)
     current->info = newElement;  
     return true;  
 }  
+
+//delete node
 template<class DT>  
 bool LinkedList<DT>::remove(DT &element)  
 {  
@@ -151,11 +176,15 @@ bool LinkedList<DT>::remove(DT &element)
     }     
     return false;  
 }  
+
+//check if list is empty
 template<class DT>  
 bool LinkedList<DT>::isEmpty() const  
 {  
      return start == NULL;  
 }  
+
+//clear list
 template<class DT>  
 void LinkedList<DT>::makeEmpty()  
 {  
@@ -167,12 +196,16 @@ void LinkedList<DT>::makeEmpty()
     }  
     current = NULL;  
 }  
+
+//copy value of a list 
 template<class DT>  
 void LinkedList<DT>::deepCopy(const LinkedList<DT> &original)  
 {  
     start = current = NULL;  
     if(original.start == NULL)  
         return;  
+
+	//originalptr->copyptr
     Node<DT> *copyptr = start = new Node<DT>;  
     Node<DT> *originalptr = original.start;  
     copyptr->info = originalptr->info;  

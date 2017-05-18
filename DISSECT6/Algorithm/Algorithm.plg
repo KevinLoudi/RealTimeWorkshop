@@ -6,38 +6,43 @@
 --------------------Configuration: Algorithm - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP8100.tmp" with contents
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP9983.tmp" with contents
 [
 /nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Algorithm.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
 "D:\CODE\TECHJOIN\DISSECT6\Algorithm\AlgorithmDlg.cpp"
-"D:\CODE\TECHJOIN\DISSECT6\Algorithm\Tree.cpp"
+"D:\Code\Techjoin\DISSECT6\Algorithm\Graph.cpp"
 ]
-Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP8100.tmp" 
-Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP8111.tmp" with contents
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP9983.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP9993.tmp" with contents
 [
 /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Algorithm.pdb" /debug /machine:I386 /out:"Debug/Algorithm.exe" /pdbtype:sept 
 .\Debug\Algorithm.obj
 .\Debug\AlgorithmDlg.obj
+.\Debug\Linklist.obj
 .\Debug\StdAfx.obj
 .\Debug\Tree.obj
 .\Debug\Algorithm.res
-.\Debug\Linklist.obj
+.\Debug\Graph.obj
 ]
-Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSP8111.tmp"
+Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSP9993.tmp"
 <h3>Output Window</h3>
 Compiling...
 AlgorithmDlg.cpp
-Tree.cpp
+D:\CODE\TECHJOIN\DISSECT6\Algorithm\AlgorithmDlg.cpp(184) : fatal error C1075: end of file found before the left brace '{' at 'd:\code\techjoin\dissect6\algorithm\graph.h(20)' was matched
+Graph.cpp
+D:\Code\Techjoin\DISSECT6\Algorithm\Graph.cpp(324) : fatal error C1075: end of file found before the left brace '{' at 'd:\code\techjoin\dissect6\algorithm\graph.h(20)' was matched
 Generating Code...
-Linking...
-Creating command line "bscmake.exe /nologo /o"Debug/Algorithm.bsc"  .\Debug\StdAfx.sbr .\Debug\Algorithm.sbr .\Debug\AlgorithmDlg.sbr .\Debug\Tree.sbr .\Debug\Linklist.sbr"
+Error executing cl.exe.
+Creating command line "bscmake.exe /nologo /o"Debug/Algorithm.bsc"  .\Debug\StdAfx.sbr .\Debug\Algorithm.sbr .\Debug\AlgorithmDlg.sbr .\Debug\Linklist.sbr .\Debug\Tree.sbr .\Debug\Graph.sbr"
 Creating browse info file...
+BSCMAKE: error BK1506 : cannot open file '.\Debug\AlgorithmDlg.sbr': No such file or directory
+Error executing bscmake.exe.
 <h3>Output Window</h3>
 
 
 
 <h3>Results</h3>
-Algorithm.exe - 0 error(s), 0 warning(s)
+Algorithm.exe - 3 error(s), 0 warning(s)
 </pre>
 </body>
 </html>

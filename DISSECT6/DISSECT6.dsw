@@ -3,18 +3,6 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
-Project: "Aarchive"=.\Aarchive\Aarchive.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
 Project: "Algorithm"=.\Algorithm\Algorithm.dsp - Package Owner=<4>
 
 Package=<5>
@@ -39,7 +27,31 @@ Package=<4>
 
 ###############################################################################
 
-Project: "FILE"=.\FILE\FILE.dsp - Package Owner=<4>
+Project: "Threadmfc"=.\Threadmfc\Threadmfc.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Threadte"=.\Threadte\Threadte.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "WorkerThread"=.\WorkerThread\WorkerThread.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

@@ -6,11 +6,21 @@
 --------------------Configuration: Aarchive - Win32 Debug--------------------
 </h3>
 <h3>Command Lines</h3>
-Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Aarchive.pdb" /debug /machine:I386 /out:"Debug/Aarchive.exe" /pdbtype:sept  .\Debug\Aarchive.obj .\Debug\AarchiveDlg.obj .\Debug\StdAfx.obj .\Debug\Aarchive.res .\Debug\WorkerInfo.obj "
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSP9183.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Aarchive.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\CODE\TECHJOIN\DISSECT6\Aarchive\WorkerInfo.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSP9183.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Aarchive.pdb" /debug /machine:I386 /out:"Debug/Aarchive.exe" /pdbtype:sept  .\Debug\Aarchive.obj .\Debug\AarchiveDlg.obj .\Debug\StdAfx.obj .\Debug\WorkerInfo.obj .\Debug\Aarchive.res "
 <h3>Output Window</h3>
-Linking...
-LINK : fatal error LNK1104: cannot open file "Debug/Aarchive.exe"
-Error executing link.exe.
+Compiling...
+WorkerInfo.cpp
+D:\CODE\TECHJOIN\DISSECT6\Aarchive\WorkerInfo.cpp(64) : error C2679: binary '>>' : no operator defined which takes a right-hand operand of type 'class CWorkerInfo *' (or there is no acceptable conversion)
+Error executing cl.exe.
+Creating command line "bscmake.exe /nologo /o"Debug/Aarchive.bsc"  .\Debug\StdAfx.sbr .\Debug\Aarchive.sbr .\Debug\AarchiveDlg.sbr .\Debug\WorkerInfo.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
 
 
 

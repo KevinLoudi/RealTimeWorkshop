@@ -4,6 +4,7 @@
 
 #include "stdafx.h"
 #include "Aarchive.h"
+#include "AarchiveDlg.h"
 #include "WorkerInfo.h"
 
 #ifdef _DEBUG
@@ -49,11 +50,23 @@ void CWorkerInfo::Serialize(CArchive &ar)
 
 	if (ar.IsStoring())
 	{
-		ar<<m_strName<<m_strJnum<<m_strPos<<m_uintPay<<m_strRemark;
+		CWorkerInfo wrInfo;
+		wrInfo.SaveInfo(m_strName,m_strJnum,m_uintPay,m_strPos,
+			m_strRemark);
+		ar<<&wrInfo;
+
+		
+		//ar<<m_strName<<m_strJnum<<m_strPos<<m_uintPay<<m_strRemark;
 	} 
 	else
 	{
-		ar>>m_strName>>m_strJnum>>m_strPos>>m_uintPay>>m_strRemark;
+		CWorkerInfo wrInfo;
+		ar>>&wrInfo;
+		wrInfo.ReadInfo(m_strName,m_strJnum,m_uintPay,m_strPos,
+			m_strRemark);
+
+
+		//ar>>m_strName>>m_strJnum>>m_strPos>>m_uintPay>>m_strRemark;
 	}
 	
 }

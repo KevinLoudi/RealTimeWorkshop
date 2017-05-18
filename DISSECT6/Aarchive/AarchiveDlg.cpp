@@ -188,12 +188,14 @@ void CAarchiveDlg::OnButtonRead()
 
 	CArchive ar(&file,CArchive::load);
 
+	Serialize(ar);
+
 	//in the same order with save
 	//ar>>m_strName>>m_strJnum>>m_strPos>>m_uintPay>>m_strRemark;
-	CWorkerInfo* wrInfo;
+	/*CWorkerInfo* wrInfo;
 	ar>>wrInfo;
 	wrInfo->ReadInfo(m_strName,m_strJnum,
-		m_uintPay,m_strPos,m_strRemark);
+		m_uintPay,m_strPos,m_strRemark);*/
 
 	UpdateData(FALSE);
 	
@@ -209,13 +211,15 @@ void CAarchiveDlg::OnButtonSave()
 	
 	//archive object
 	CArchive ar(&file, CArchive::store);
+
+	Serialize(ar);
 	
 	//save in the file
 	//ar<<m_strName<<m_strJnum<<m_strPos<<m_uintPay<<m_strRemark;
-	CWorkerInfo wrInfo;
+	/*CWorkerInfo wrInfo;
 	wrInfo.SaveInfo(m_strName,m_strJnum,m_uintPay,m_strPos,
 		m_strRemark);
 
-	ar<<&wrInfo;
+	ar<<&wrInfo;*/
 	
 }
