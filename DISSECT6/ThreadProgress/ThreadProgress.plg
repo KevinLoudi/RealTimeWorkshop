@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ThreadProgress - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPC974.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ThreadProgress.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"D:\Code\Techjoin\DISSECT6\ThreadProgress\ThreadProgressDlg.cpp"
+]
+Creating command line "cl.exe @C:\Users\kevin\AppData\Local\Temp\RSPC974.tmp" 
+Creating temporary file "C:\Users\kevin\AppData\Local\Temp\RSPC975.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ThreadProgress.pdb" /debug /machine:I386 /out:"Debug/ThreadProgress.exe" /pdbtype:sept 
+.\Debug\ThreadProgress.obj
+.\Debug\ThreadProgressDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\ThreadProgress.res
+]
+Creating command line "link.exe @C:\Users\kevin\AppData\Local\Temp\RSPC975.tmp"
+<h3>Output Window</h3>
+Compiling...
+ThreadProgressDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ThreadProgress.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
