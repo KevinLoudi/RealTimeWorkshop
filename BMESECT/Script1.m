@@ -100,16 +100,38 @@ sym('F=z/(z-exp(T*log(8)))')
 
 %% Symbolic calculation
 clear; clc;
-syms('x','y');
-collect(x^2*y+y*x-x^2-2*x) %Collect coefficients.合并同类项
+% syms('x','y');
+% collect(x^2*y+y*x-x^2-2*x) %Collect coefficients.合并同类项
+% 
+% syms x a b c d;
+% int(x)
+% int(x^2,a,b)
+% p=[a b; c d];
+% inver_p=inv(p)
 
-syms x a b c d;
-int(x)
-int(x^2,a,b)
-p=[a b; c d];
-inver_p=inv(p)
+equ=sym(sqrt(3))
+class(equ)
+digits(8)
+equ_1=vpa(equ)
 
+%表达式展开
+syms x;
+f=cos(3*acos(x));
+f1=expand(f)
 
+%按照a, b同类型合并，降幂排列
+syms a b n x y;
+f=(a+b)^2+a*(x+y)^3-b*y;
+fa=collect(f,a),
+fb=collect(f,b),
 
+%表达式综合化简
+syms x c alph beta;
+e1=sin(x)^2+cos(x)^2;
+e2=exp(c*log(alph+beta));
+e10=simplify(e1), 
+e20=simplify(e2),
 
+%% 
+evluate_magic(25);  
 

@@ -3,6 +3,18 @@ Microsoft Developer Studio Workspace File, Format Version 6.00
 
 ###############################################################################
 
+Project: "AClock"=.\AClock\AClock.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
 Project: "Algorithm"=.\Algorithm\Algorithm.dsp - Package Owner=<4>
 
 Package=<5>
@@ -28,18 +40,6 @@ Package=<4>
 ###############################################################################
 
 Project: "TestDB1"=.\TestDB1\TestDB1.dsp - Package Owner=<4>
-
-Package=<5>
-{{{
-}}}
-
-Package=<4>
-{{{
-}}}
-
-###############################################################################
-
-Project: "ThreadProgress"=.\ThreadProgress\ThreadProgress.dsp - Package Owner=<4>
 
 Package=<5>
 {{{

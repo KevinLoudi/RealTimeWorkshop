@@ -1,0 +1,71 @@
+// AClock.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (AClock.tlb) that will become a resource in
+// AClock.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(299DC0A2-5290-402A-A347-57880DFCBCDD), version(1.0),
+  helpfile("AClock.hlp"),
+  helpstring("AClock ActiveX Control module"),
+  control ]
+library ACLOCKLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CAClockCtrl
+
+	[ uuid(F36A090D-45BC-408A-8BC7-1DF044013BBE),
+	  helpstring("Dispatch interface for AClock Control"), hidden ]
+	dispinterface _DAClock
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CAClockCtrl)
+			[id(DISPID_BACKCOLOR), bindable, requestedit] OLE_COLOR BackColor;
+			[id(DISPID_FORECOLOR), bindable, requestedit] OLE_COLOR ForeColor;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CAClockCtrl)
+			//}}AFX_ODL_METHOD
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CAClockCtrl
+
+	[ uuid(EBE0F905-C451-4076-9DC8-387DC3D144EB),
+	  helpstring("Event interface for AClock Control") ]
+	dispinterface _DAClockEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CAClockCtrl)
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CAClockCtrl
+
+	[ uuid(87C61453-9FEB-4D16-A92F-41F5DE4E6C87),
+	  helpstring("AClock Control"), control ]
+	coclass AClock
+	{
+		[default] dispinterface _DAClock;
+		[default, source] dispinterface _DAClockEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
